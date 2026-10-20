@@ -1,0 +1,13 @@
+[36m==> Compile contract[0m
+[32m✔ Compile contract PASS[0m
+[36m==> Build web dApp[0m
+[32m✔ Build web dApp PASS[0m
+[36m==> Tests (integration + invariants + property)[0m
+[32m✔ Tests (integration + invariants + property) PASS[0m
+[36m==> Slither (static analysis)[0m
+[32m✔ Slither (static analysis) PASS[0m
+[36m==> Dependency audit[0m
+[32m✔ Dependency audit PASS[0m
+[36m==> npm audit --audit-level=high (root)[0m
+[32m✔ npm audit --audit-level=high (root) PASS[0m
+[32m✔ CI:LOCAL PASSED[0m — log at reports/ci/ci-local.log

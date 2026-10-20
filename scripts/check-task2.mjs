@@ -23,11 +23,11 @@ if (summary) {
 }
 
 head("Negative checks - vulnerabilities blocked by the contract");
-vuln("SC01 Access Control: outsider address -> AccessControlUnauthorizedAccount (integration #4, property P2)");
-vuln("SC01/SC03 four-eyes: initiator settles own payment -> SelfSettlementForbidden (integration #5)");
-vuln("SC03 Logic: transition from final status -> InvalidStatusTransition; reused paymentId -> PaymentAlreadyExists (#6)");
+vuln("SC01 Access Control: outsider -> AccessControlUnauthorizedAccount (test #4, P2)");
+vuln("SC01/SC03 four-eyes: self-settlement -> SelfSettlementForbidden (test #5)");
+vuln("SC03 Logic: final-status change -> InvalidStatusTransition; reuse -> PaymentAlreadyExists (#6)");
 vuln("SC04 Input: zero paymentId/docHash/amount/reasonCode -> rejected (#7)");
-vuln("SC10 DoS: pause() blocks writes (EnforcedPause); pause not available to non-admin (#9)");
+vuln("SC10 DoS: pause() blocks writes (EnforcedPause); pause only for admin (#9)");
 console.log(`  ${Y}-> every vector above reverts; registry state does not change.${X}`);
 
 head("Static analysis and dependencies");
@@ -38,7 +38,7 @@ const ar = rj("reports/deps/npm-audit-root.json")?.metadata?.vulnerabilities;
 const aw = rj("reports/deps/npm-audit-web.json")?.metadata?.vulnerabilities;
 if (ar) (ar.high || ar.critical ? vuln : ok)(`npm audit (root): high ${ar.high} critical ${ar.critical} moderate ${ar.moderate} low ${ar.low}`);
 if (aw) {
-  (aw.high || aw.critical) ? vuln(`npm audit (web): high ${aw.high} critical ${aw.critical} moderate ${aw.moderate} - Vite/esbuild dev deps (dev server only, not in production bundle)`) : ok(`npm audit (web): clean`);
+  (aw.high || aw.critical) ? vuln(`npm audit (web): high ${aw.high}, moderate ${aw.moderate} - Vite/esbuild dev deps (dev-only, not in prod bundle)`) : ok(`npm audit (web): clean`);
 }
 
 head("Task 2 summary");

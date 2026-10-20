@@ -3,10 +3,10 @@ No contracts to compile
 Running node:test tests
 
   Invariants under random sequences (SC01/SC03)
-    ✔ INV-1..INV-3 hold after 60 randomized steps (4230ms)
+    ✔ INV-1..INV-3 hold after 60 randomized steps (5208ms)
 
 
-  1 passing (6090ms)
+  1 passing (7463ms)
 
 
 

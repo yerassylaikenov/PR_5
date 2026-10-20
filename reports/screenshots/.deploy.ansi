@@ -1,0 +1,23 @@
+[1m[36m=== PR5 deploy + roles + seed (local Hardhat) ===[0m
+$ npm run deploy:local
+
+Deployer (admin): 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+Operator        : 0x70997970c51812dc3a010c7d01b50e0d17dc79c8
+Settlement      : 0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc
+
+Deployed at 0x5fbdb2315678afecb367f032d93f642f64180aa3
+  tx=0x001a4cc0606582bd443ba42efe34cdfc5ac1f496dc82e5defaefa10b33c49a7b block=1 gasUsed=963412
+Granted OPERATOR_ROLE   -> 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 (block 2)
+Granted SETTLEMENT_ROLE -> 0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc (block 3)
+
+Wrote deployments/localhost.json and web/public/deployment.json
+
+$ npm run seed
+
+registered PR5-OP-2026-000001 (0xf880251d...) tx=0x0b9bcd3932...
+registered PR5-OP-2026-000002 (0x4a0970a6...) tx=0x1f31791472...
+registered PR5-OP-2026-000003 (0xb2ec7aed...) tx=0x31b90cd0fa...
+markExecuted order 1 tx=0x82e601b7f4...
+markRejected order 2 (AC04) tx=0x960c946913...
+
+Seed done. totalRegistered=3. Order 3 left Registered for the live demo.

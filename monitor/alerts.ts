@@ -92,10 +92,11 @@ export class AlertSink {
       alert.severity === "High"
         ? `\x1b[41m\x1b[1m ALERT ${alert.rule} [HIGH] \x1b[0m`
         : `\x1b[43m\x1b[30m\x1b[1m ALERT ${alert.rule} [MEDIUM] \x1b[0m`;
+    const shortActor = alert.actor.slice(0, 10) + "…" + alert.actor.slice(-4);
     const colored =
-      `${header} \x1b[31mactor=${alert.actor}\x1b[0m count=${alert.count} ` +
-      `in ${alert.windowSeconds}s lastError=${alert.lastError}` +
-      (suppressed ? ` (suppressed since previous: ${suppressed})` : "");
+      `${header} \x1b[31mactor=${shortActor}\x1b[0m count=${alert.count} ` +
+      `in ${alert.windowSeconds}s err=${alert.lastError}` +
+      (suppressed ? ` (suppressed: ${suppressed})` : "");
     this.emit(colored);
 
     const record = { ...alert, suppressedSincePrevious: suppressed };

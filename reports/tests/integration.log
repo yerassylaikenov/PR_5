@@ -3,7 +3,7 @@ No contracts to compile
 Running node:test tests
 
   Access control — negative
-    ✔ 4) outsider calling registerPayment reverts (AccessControlUnauthorizedAccount); state unchanged (SC01) (3558ms)
+    ✔ 4) outsider calling registerPayment reverts (AccessControlUnauthorizedAccount); state unchanged (SC01) (4859ms)
     ✔ 5) a role holder settling their OWN payment reverts (SelfSettlementForbidden) (SC01/SC03)
     ✔ extra) pause() by a non-admin reverts (SC01/SC10)
 
@@ -21,7 +21,7 @@ Running node:test tests
     ✔ 7) zero inputs are rejected: InvalidPaymentId / InvalidDocHash / InvalidAmount / InvalidReasonCode (SC04)
 
 
-  10 passing (5699ms)
+  10 passing (7791ms)
 
 
 

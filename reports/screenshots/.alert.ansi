@@ -6,7 +6,7 @@ rule R-1: >=3 access-denied from one actor within 60s -> High (cooldown 5 min)
 [31m✘[0m attempt 1: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 2: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 3: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
-[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6eb2c4f870365e785982e1f101e93b906[0m count=3 in 60s lastError=AccessControlUnauthorizedAccount
+[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6…b906[0m count=3 in 60s err=AccessControlUnauthorizedAccount
 [31m✘[0m attempt 4: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 5: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 

@@ -1,0 +1,8 @@
+[1m[36m=== demo:normal — legitimate register -> markExecuted -> verifyDocument ===[0m[0m
+contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
+
+[32m✔[0m [32mregisterPayment[0m tx=0xfc5da48bd8... block=13 gasUsed=101277
+[32m✔[0m [32mmarkExecuted[0m   tx=0xb1945d8df9... block=14 gasUsed=61730
+[32m✔[0m [32mverifyDocument[0m -> true
+
+[1malerts: 0[0m  (expected 0 for the legitimate scenario)

@@ -1,0 +1,9 @@
+
+> pr5-yerassyl-aikenov@1.0.0 monitor
+> tsx monitor/collector.ts
+
+[32m[monitor] started[0m contract=0x5fbdb2315678afecb367f032d93f642f64180aa3 rpc=http://127.0.0.1:8545
+[monitor] telemetry -> reports/monitoring/telemetry.jsonl, alerts -> reports/monitoring/alerts.log
+[monitor] rules: R-1 (>=3 access-denied/60s, High), R-2 (>=2 operational failures/120s, Medium)
+[36m[monitor][0m application-log endpoint on http://127.0.0.1:8787/log
+[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6…b906[0m count=3 in 60s err=AccessControlUnauthorizedAccount

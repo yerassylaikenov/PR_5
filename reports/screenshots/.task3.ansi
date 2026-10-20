@@ -10,7 +10,7 @@ rule R-1: >=3 access-denied from one actor within 60s -> High (cooldown 5 min)
 [31m✘[0m attempt 1: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 2: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 3: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
-[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6eb2c4f870365e785982e1f101e93b906[0m count=3 in 60s lastError=AccessControlUnauthorizedAccount
+[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6…b906[0m count=3 in 60s err=AccessControlUnauthorizedAccount
 [31m✘[0m attempt 4: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 [31m✘[0m attempt 5: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
 
@@ -22,8 +22,8 @@ See reports/monitoring/alerts.log for the structured alert record.
 [1m[36m=== demo:normal — legitimate register -> markExecuted -> verifyDocument ===[0m[0m
 contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
 
-[32m✔[0m [32mregisterPayment[0m tx=0xa1728a4339... block=94 gasUsed=101277
-[32m✔[0m [32mmarkExecuted[0m   tx=0x856c2043d4... block=95 gasUsed=61730
+[32m✔[0m [32mregisterPayment[0m tx=0x1b4a707550... block=17 gasUsed=101277
+[32m✔[0m [32mmarkExecuted[0m   tx=0x2a98c9d765... block=18 gasUsed=61730
 [32m✔[0m [32mverifyDocument[0m -> true
 
 [1malerts: 0[0m  (expected 0 for the legitimate scenario)

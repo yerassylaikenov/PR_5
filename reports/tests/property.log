@@ -3,13 +3,13 @@ No contracts to compile
 Running node:test tests
 
   Property: stored data round-trips and verifyDocument is exact (SC04/SC08)
-    ✔ P1) exact storage + verifyDocument over random inputs and boundaries (3696ms)
+    ✔ P1) exact storage + verifyDocument over random inputs and boundaries (4445ms)
 
   Property: unprivileged accounts cannot write (SC01)
-    ✔ P2) every write reverts for random role-less accounts; state unchanged (100ms)
+    ✔ P2) every write reverts for random role-less accounts; state unchanged (137ms)
 
 
-  2 passing (5675ms)
+  2 passing (6874ms)
 
 
 
