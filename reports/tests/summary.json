@@ -1,0 +1,35 @@
+{
+  "generatedAt": "2026-10-20T15:50:09.252Z",
+  "results": [
+    {
+      "category": "integration",
+      "files": [
+        "test/integration/access-control.test.ts",
+        "test/integration/pause.test.ts",
+        "test/integration/payment-flow.test.ts",
+        "test/integration/state-machine.test.ts"
+      ],
+      "passing": 10,
+      "failing": 0,
+      "ok": true
+    },
+    {
+      "category": "invariants",
+      "files": [
+        "test/invariants/registry-invariants.test.ts"
+      ],
+      "passing": 1,
+      "failing": 0,
+      "ok": true
+    },
+    {
+      "category": "property",
+      "files": [
+        "test/property/registry-properties.test.ts"
+      ],
+      "passing": 2,
+      "failing": 0,
+      "ok": true
+    }
+  ]
+}

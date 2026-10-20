@@ -1,0 +1,51 @@
+name: PR5 CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-test-analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            web/package-lock.json
+
+      - name: Install dependencies (root)
+        run: npm ci
+
+      - name: Install dependencies (web)
+        run: npm --prefix web ci
+
+      - name: Compile contract
+        run: npm run compile
+
+      - name: Build web dApp
+        run: npm run web:build
+
+      - name: Tests (integration + invariants + property)
+        run: npm test
+
+      - name: Slither static analysis
+        uses: crytic/slither-action@v0.4.0
+        continue-on-error: true
+        with:
+          target: contracts/PaymentOrderRegistry.sol
+          solc-version: "0.8.28"
+          slither-args: --solc-remaps @openzeppelin=node_modules/@openzeppelin
+
+      - name: Dependency audit (fail only on high+)
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Secrets check
+        run: npm run check:secrets

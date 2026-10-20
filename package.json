@@ -1,0 +1,50 @@
+{
+  "name": "pr5-yerassyl-aikenov",
+  "private": true,
+  "version": "1.0.0",
+  "description": "PR5 (Variant 1, Banking & FinTech): Web3 client, security verification, monitoring and DevSecOps for the interbank payment-order registry.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.10.0"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "seed": "hardhat run scripts/seed.ts --network localhost",
+    "test": "node scripts/run-tests.mjs all",
+    "test:all": "hardhat test nodejs",
+    "test:integration": "node scripts/run-tests.mjs integration",
+    "test:invariants": "node scripts/run-tests.mjs invariants",
+    "test:property": "node scripts/run-tests.mjs property",
+    "web:install": "npm --prefix web install",
+    "web": "npm --prefix web run dev",
+    "web:build": "npm --prefix web run build",
+    "monitor": "tsx monitor/collector.ts",
+    "demo:alert": "tsx scripts/demo-attack.ts",
+    "demo:normal": "tsx scripts/demo-normal.ts",
+    "loadtest": "tsx loadtest/run.ts && node loadtest/charts.mjs",
+    "charts": "node loadtest/charts.mjs",
+    "slither": "node scripts/slither.mjs",
+    "audit": "node scripts/run-audit.mjs",
+    "ci:local": "node scripts/ci-local.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "reset": "node scripts/reset.mjs",
+    "report:data": "node scripts/collect-report-data.mjs",
+    "demo:all": "node scripts/demo-all.mjs",
+    "check:task1": "node scripts/check-task1.mjs",
+    "check:task2": "node scripts/check-task2.mjs",
+    "check:task3": "node scripts/check-task3.mjs"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "3.0.11",
+    "@nomicfoundation/hardhat-node-test-runner": "3.1.0",
+    "@nomicfoundation/hardhat-toolbox-viem": "5.0.7",
+    "@openzeppelin/contracts": "5.6.1",
+    "@types/node": "22.20.5",
+    "hardhat": "3.18.1",
+    "tsx": "4.20.3",
+    "typescript": "6.0.3",
+    "viem": "2.57.3"
+  }
+}

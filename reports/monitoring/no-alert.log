@@ -1,0 +1,8 @@
+=== demo:normal — legitimate register -> markExecuted -> verifyDocument ===
+contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
+
+✔ registerPayment tx=0xa1728a4339... block=94 gasUsed=101277
+✔ markExecuted   tx=0x856c2043d4... block=95 gasUsed=61730
+✔ verifyDocument -> true
+
+alerts: 0  (expected 0 for the legitimate scenario)

@@ -1,0 +1,29 @@
+
+[1m[36mTASK 2 - Verification and security analysis[0m
+
+[1m[36mTests (integration + invariants + property)[0m
+[PASS] integration: 10 passing, 0 failing (4 files)
+[PASS] invariants: 1 passing, 0 failing (1 files)
+[PASS] property: 2 passing, 0 failing (1 files)
+
+Test summary written to reports/tests/summary.json — ALL GREEN
+[32m✔[0m integration: 10 passing, 0 failing
+[32m✔[0m invariants: 1 passing, 0 failing
+[32m✔[0m property: 2 passing, 0 failing
+
+[1m[36mNegative checks - vulnerabilities blocked by the contract[0m
+[41m[1m VULNERABILITY [0m [31mSC01 Access Control: outsider address -> AccessControlUnauthorizedAccount (integration #4, property P2)[0m
+[41m[1m VULNERABILITY [0m [31mSC01/SC03 four-eyes: initiator settles own payment -> SelfSettlementForbidden (integration #5)[0m
+[41m[1m VULNERABILITY [0m [31mSC03 Logic: transition from final status -> InvalidStatusTransition; reused paymentId -> PaymentAlreadyExists (#6)[0m
+[41m[1m VULNERABILITY [0m [31mSC04 Input: zero paymentId/docHash/amount/reasonCode -> rejected (#7)[0m
+[41m[1m VULNERABILITY [0m [31mSC10 DoS: pause() blocks writes (EnforcedPause); pause not available to non-admin (#9)[0m
+  [33m-> every vector above reverts; registry state does not change.[0m
+
+[1m[36mStatic analysis and dependencies[0m
+[33m⚠ Slither not installed - see reports/slither/STATUS.md (requires user run)[0m
+[32m✔[0m npm audit (root): high 0 critical 0 moderate 0 low 0
+[41m[1m VULNERABILITY [0m [31mnpm audit (web): high 1 critical 0 moderate 1 - Vite/esbuild dev deps (dev server only, not in production bundle)[0m
+
+[1m[36mTask 2 summary[0m
+[32m✔[0m STRIDE (docs/STRIDE.md), 3 invariants (docs/INVARIANTS.md), authorization matrix (docs/AUTHZ_MATRIX.md)
+[32m✔[0m All tests green; audit classification - reports/deps/SUMMARY.md

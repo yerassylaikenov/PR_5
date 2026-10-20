@@ -1,0 +1,14 @@
+=== demo:alert - R-1 access-control violation attempts ===
+contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
+attacker (no role)=0x90F79bf6EB2c4f870365E785982E1f101E93b906
+rule R-1: >=3 access-denied from one actor within 60s -> High (cooldown 5 min)
+
+✘ attempt 1: REVERTED AccessControlUnauthorizedAccount  (simulateContract)
+✘ attempt 2: REVERTED AccessControlUnauthorizedAccount  (simulateContract)
+✘ attempt 3: REVERTED AccessControlUnauthorizedAccount  (simulateContract)
+ ALERT R-1 [HIGH]  actor=0x90f79bf6eb2c4f870365e785982e1f101e93b906 count=3 in 60s lastError=AccessControlUnauthorizedAccount
+✘ attempt 4: REVERTED AccessControlUnauthorizedAccount  (simulateContract)
+✘ attempt 5: REVERTED AccessControlUnauthorizedAccount  (simulateContract)
+
+Result: 1 alert emitted for R-1, remaining matches suppressed by cooldown.
+See reports/monitoring/alerts.log for the structured alert record.

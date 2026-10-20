@@ -1,0 +1,57 @@
+# ci:local — 2026-10-20T15:43:48.512Z
+
+
+===== Compile contract =====
+$ npx hardhat compile
+No contracts to compile
+
+[exit 0]
+
+===== Build web dApp =====
+$ npm --prefix web run build
+
+> pr5-web@1.0.0 build
+> tsc --noEmit && vite build
+
+[36mvite v5.4.11 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 457 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:   0.30 kB[22m
+[2mdist/[22m[35massets/index-B3fvPX7K.css  [39m[1m[2m  3.36 kB[22m[1m[22m[2m │ gzip:   1.18 kB[22m
+[2mdist/[22m[36massets/ccip-DAdPKSIP.js    [39m[1m[2m  3.04 kB[22m[1m[22m[2m │ gzip:   1.39 kB[22m
+[2mdist/[22m[36massets/index-Cx1UPmnz.js   [39m[1m[2m448.95 kB[22m[1m[22m[2m │ gzip: 140.02 kB[22m
+[32m✓ built in 2.80s[39m
+
+[exit 0]
+
+===== Tests (integration + invariants + property) =====
+$ node scripts/run-tests.mjs all
+[PASS] integration: 10 passing, 0 failing (4 files)
+[PASS] invariants: 1 passing, 0 failing (1 files)
+[PASS] property: 2 passing, 0 failing (1 files)
+
+Test summary written to reports/tests/summary.json — ALL GREEN
+
+[exit 0]
+
+===== Slither (static analysis) =====
+$ node scripts/slither.mjs
+[33m[slither] not installed — wrote reports/slither/STATUS.md (requires user run)[0m
+
+[exit 0]
+
+===== Dependency audit =====
+$ node scripts/run-audit.mjs
+[audit] root: info 0, low 0, moderate 0, high 0, critical 0
+[audit] web : info 0, low 0, moderate 1, high 1, critical 0
+[audit] wrote reports/deps/npm-audit-*.json and SUMMARY.md
+
+[exit 0]
+
+===== npm audit --audit-level=high (root) =====
+$ npm audit --audit-level=high
+found 0 vulnerabilities
+
+[exit 0]

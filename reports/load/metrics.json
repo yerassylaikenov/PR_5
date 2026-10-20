@@ -1,0 +1,49 @@
+{
+  "generatedAt": "2026-10-20T15:43:36.418Z",
+  "gasPrice": "1232030859",
+  "miningMode": "automine",
+  "profiles": {
+    "A": {
+      "profile": "A (sequential, 1 account)",
+      "totalTx": 30,
+      "successful": 30,
+      "failed": 0,
+      "failureRate": 0,
+      "wallTimeMs": 378.1014,
+      "throughputOpsSec": 79.34379507719358,
+      "latency": {
+        "p50": 12.089599999999791,
+        "p95": 13.884800000000268,
+        "min": 10.92639999999983,
+        "max": 17.567599999999857
+      },
+      "gasUsed": {
+        "min": 101241,
+        "median": 101265,
+        "max": 101265,
+        "sum": 3037842
+      }
+    },
+    "B": {
+      "profile": "B (5 parallel clients x 6)",
+      "totalTx": 30,
+      "successful": 30,
+      "failed": 0,
+      "failureRate": 0,
+      "wallTimeMs": 197.9985000000006,
+      "throughputOpsSec": 151.51629936590382,
+      "latency": {
+        "p50": 30.46049999999923,
+        "p95": 46.15140000000065,
+        "min": 13.65230000000065,
+        "max": 47.77760000000035
+      },
+      "gasUsed": {
+        "min": 101241,
+        "median": 101265,
+        "max": 101265,
+        "sum": 3037854
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "cooldowns": {
+    "R-1:0x90f79bf6eb2c4f870365e785982e1f101e93b906": {
+      "until": 1792511819456,
+      "suppressed": 2,
+      "firstFiredTs": "2026-10-20T15:51:59.455Z"
+    }
+  }
+}

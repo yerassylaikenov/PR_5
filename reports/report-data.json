@@ -1,0 +1,246 @@
+{
+  "generatedAt": "2026-10-20T15:43:37.789Z",
+  "tools": {
+    "os": "Windows_NT 10.0.26300 (x64)",
+    "node": "v24.13.0",
+    "npm": "11.6.2",
+    "hardhat": "3.18.1",
+    "viem": "2.57.3",
+    "typescript": "6.0.3",
+    "openzeppelin": "5.6.1",
+    "solc": "0.8.28",
+    "react": "18.3.1",
+    "vite": "5.4.11",
+    "slither": "не установлен (требует запуска у пользователя)"
+  },
+  "deployment": {
+    "address": "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+    "deployTxHash": "0x001a4cc0606582bd443ba42efe34cdfc5ac1f496dc82e5defaefa10b33c49a7b",
+    "blockNumber": "1",
+    "gasUsed": "963412",
+    "roles": {
+      "admin": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+      "operator": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "settlement": "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc"
+    }
+  },
+  "demoTx": [
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x0b9bcd393272e6922d70ed418dac920a33164357f1d04d46f2d27b3a345aa98e",
+      "block": "4",
+      "status": "success",
+      "gasUsed": "118389"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x1f317914728a15280cf01ebd43a4f5a817bc11a67f230b1958a65cfe967d08c9",
+      "block": "5",
+      "status": "success",
+      "gasUsed": "101289"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x31b90cd0fad71ccba02d6bc24af689dd7494a46c846f35167536c15b7a816b3a",
+      "block": "6",
+      "status": "success",
+      "gasUsed": "101277"
+    },
+    {
+      "fn": "markExecuted",
+      "actor": "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+      "txHash": "0x82e601b7f4e1624430cb1d38ca285777c8f6d201a50b3ea5650d58e1bd507350",
+      "block": "7",
+      "status": "success",
+      "gasUsed": "61730"
+    },
+    {
+      "fn": "markRejected",
+      "actor": "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+      "txHash": "0x960c946913f79043b224fb740a2a624cdce78c1f054623752e768747eb7d00d9",
+      "block": "8",
+      "status": "success",
+      "gasUsed": "61993"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x826a0e639a8ac26a28db0a0de8c06a7ee8deaf8f6de74c00a5d99f50c664bad7",
+      "block": "9",
+      "status": "success",
+      "gasUsed": "101253"
+    },
+    {
+      "fn": "markExecuted",
+      "actor": "0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc",
+      "txHash": "0x5bd0fef770b232c38d6e22c3e5120dac42268b670f8a0507465ff9a32e4228bc",
+      "block": "10",
+      "status": "success",
+      "gasUsed": "61706"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x66909af2220bc2a8f7f5ed67b83022705dcb10487495305b315f4fd8ebc5eca3",
+      "block": "11",
+      "status": "success",
+      "gasUsed": "101253"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0xd2d287b5f8940240440d3ad3bacd5b69e73a85eacc093f576aae3ba51ca7c4f6",
+      "block": "12",
+      "status": "success",
+      "gasUsed": "101265"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0xc00e611e74ddeb1af91c561666ce9fcaab1c279f96f2ce6e985314ceecaf7f2f",
+      "block": "13",
+      "status": "success",
+      "gasUsed": "101265"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x58671494131700ccdb0487fbbc9de62b2abf982b89c494f8bd13d914cb961910",
+      "block": "14",
+      "status": "success",
+      "gasUsed": "101253"
+    },
+    {
+      "fn": "registerPayment",
+      "actor": "0x70997970c51812dc3a010c7d01b50e0d17dc79c8",
+      "txHash": "0x4955c3d2717c66cea344d9965f1c5f4176e1537bbe1b490c2dc357194d792780",
+      "block": "15",
+      "status": "success",
+      "gasUsed": "101265"
+    }
+  ],
+  "tests": {
+    "generatedAt": "2026-10-20T15:43:17.189Z",
+    "results": [
+      {
+        "category": "integration",
+        "files": [
+          "test/integration/access-control.test.ts",
+          "test/integration/pause.test.ts",
+          "test/integration/payment-flow.test.ts",
+          "test/integration/state-machine.test.ts"
+        ],
+        "passing": 10,
+        "failing": 0,
+        "ok": true
+      },
+      {
+        "category": "invariants",
+        "files": [
+          "test/invariants/registry-invariants.test.ts"
+        ],
+        "passing": 1,
+        "failing": 0,
+        "ok": true
+      },
+      {
+        "category": "property",
+        "files": [
+          "test/property/registry-properties.test.ts"
+        ],
+        "passing": 2,
+        "failing": 0,
+        "ok": true
+      }
+    ]
+  },
+  "load": {
+    "generatedAt": "2026-10-20T15:43:36.418Z",
+    "gasPrice": "1232030859",
+    "miningMode": "automine",
+    "profiles": {
+      "A": {
+        "profile": "A (sequential, 1 account)",
+        "totalTx": 30,
+        "successful": 30,
+        "failed": 0,
+        "failureRate": 0,
+        "wallTimeMs": 378.1014,
+        "throughputOpsSec": 79.34379507719358,
+        "latency": {
+          "p50": 12.089599999999791,
+          "p95": 13.884800000000268,
+          "min": 10.92639999999983,
+          "max": 17.567599999999857
+        },
+        "gasUsed": {
+          "min": 101241,
+          "median": 101265,
+          "max": 101265,
+          "sum": 3037842
+        }
+      },
+      "B": {
+        "profile": "B (5 parallel clients x 6)",
+        "totalTx": 30,
+        "successful": 30,
+        "failed": 0,
+        "failureRate": 0,
+        "wallTimeMs": 197.9985000000006,
+        "throughputOpsSec": 151.51629936590382,
+        "latency": {
+          "p50": 30.46049999999923,
+          "p95": 46.15140000000065,
+          "min": 13.65230000000065,
+          "max": 47.77760000000035
+        },
+        "gasUsed": {
+          "min": 101241,
+          "median": 101265,
+          "max": 101265,
+          "sum": 3037854
+        }
+      }
+    }
+  },
+  "alerts": [
+    {
+      "rule": "R-1",
+      "severity": "High",
+      "actor": "0x90f79bf6eb2c4f870365e785982e1f101e93b906",
+      "ts": "2026-10-20T15:43:23.195Z",
+      "windowSeconds": 60,
+      "count": 3,
+      "txHashes": [
+        "-",
+        "-",
+        "-"
+      ],
+      "lastError": "AccessControlUnauthorizedAccount",
+      "message": ">=3 access-control violation attempts from 0x90f79bf6eb2c4f870365e785982e1f101e93b906 within 60s",
+      "suppressedSincePrevious": 0
+    }
+  ],
+  "audit": {
+    "root": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "web": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 1,
+      "critical": 0,
+      "total": 2
+    }
+  },
+  "slitherPending": true
+}

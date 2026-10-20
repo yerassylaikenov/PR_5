@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SYNTHETIC demo payment order. All identifiers are fictional (not a real IIN/IBAN/person). -->
+<PaymentOrder xmlns="urn:pr5:demo:interbank:1" schemeVersion="1">
+  <Header>
+    <SenderBic>DEMOKZKAXXX</SenderBic>
+    <ReceiverBic>TESTKZKBXXX</ReceiverBic>
+    <OperationRef>OP-2026-000001</OperationRef>
+    <ValueDate>2026-10-20</ValueDate>
+  </Header>
+  <Amount currency="KZT" unit="tiyn">150000000</Amount>
+  <Debtor>
+    <Name>Demo Alpha LLP</Name>
+    <Account>KZ00DEMO0000000000000001</Account>
+  </Debtor>
+  <Creditor>
+    <Name>Demo Beta LLP</Name>
+    <Account>KZ00TEST0000000000000002</Account>
+  </Creditor>
+  <Purpose>Synthetic test settlement — order 001</Purpose>
+</PaymentOrder>

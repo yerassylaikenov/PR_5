@@ -1,0 +1,456 @@
+{
+  "version": "32.5.1",
+  "pages": [
+    {
+      "id": "pr5-arch-1",
+      "name": "PR5 Архитектура dApp",
+      "cells": [
+        {
+          "id": "1",
+          "type": "layer"
+        },
+        {
+          "id": "title",
+          "type": "node",
+          "parent": "1",
+          "label": "Рисунок 1 — Архитектура dApp (ПР №5, вариант 1 «Банки и финтех»): Пользователь — dApp — Кошелёк — RPC — Смарт-контракт PaymentOrderRegistry",
+          "html": "<b>Рисунок 1 — Архитектура dApp (ПР №5, вариант 1 «Банки и финтех»): Пользователь — dApp — Кошелёк — RPC — Смарт-контракт PaymentOrderRegistry</b>"
+        },
+        {
+          "id": "z1",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 1. Пользователи и роли\n(внешняя зона, недоверенный ввод)",
+          "html": "<b>Зона 1. Пользователи и роли</b><br>(внешняя зона, недоверенный ввод)"
+        },
+        {
+          "id": "z2",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 2. Браузер — dApp (React + viem v2)\nклиентская логика, ключей нет",
+          "html": "<b>Зона 2. Браузер — dApp (React + viem v2)</b><br>клиентская логика, ключей нет"
+        },
+        {
+          "id": "z3",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 3. Кошелёк (MetaMask)\nвладелец ключей",
+          "html": "<b>Зона 3. Кошелёк (MetaMask)</b><br>владелец ключей"
+        },
+        {
+          "id": "z4",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 4. RPC-узел\nHardhat node, chainId 31337",
+          "html": "<b>Зона 4. RPC-узел</b><br>Hardhat node, chainId 31337"
+        },
+        {
+          "id": "z5",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 5. Блокчейн — смарт-контракт\nединственный авторитетный источник истины",
+          "html": "<b>Зона 5. Блокчейн — смарт-контракт</b><br>единственный авторитетный источник истины"
+        },
+        {
+          "id": "u1",
+          "type": "node",
+          "parent": "1",
+          "label": "Оператор банка-отправителя\nOPERATOR_ROLE\nregisterPayment, cancelPayment",
+          "html": "<b>Оператор банка-отправителя</b><br>OPERATOR_ROLE<br>registerPayment, cancelPayment"
+        },
+        {
+          "id": "u2",
+          "type": "node",
+          "parent": "1",
+          "label": "Расчётный (клиринговый) центр\nSETTLEMENT_ROLE\nmarkExecuted, markRejected",
+          "html": "<b>Расчётный (клиринговый) центр</b><br>SETTLEMENT_ROLE<br>markExecuted, markRejected"
+        },
+        {
+          "id": "u3",
+          "type": "node",
+          "parent": "1",
+          "label": "Администратор\nDEFAULT_ADMIN_ROLE\ngrantRole / pause, без операционных ролей",
+          "html": "<b>Администратор</b><br>DEFAULT_ADMIN_ROLE<br>grantRole / pause, без операционных ролей"
+        },
+        {
+          "id": "u4",
+          "type": "node",
+          "parent": "1",
+          "label": "Аудитор / банк-получатель\nбез роли — только чтение\ngetPayment, verifyDocument",
+          "html": "<b>Аудитор / банк-получатель</b><br>без роли — только чтение<br>getPayment, verifyDocument"
+        },
+        {
+          "id": "u5",
+          "type": "node",
+          "parent": "1",
+          "label": "Посторонний / нарушитель\nбез роли — негативный сценарий:\nпопытка привилегированной операции",
+          "html": "<b>Посторонний / нарушитель</b><br>без роли — негативный сценарий:<br>попытка привилегированной операции"
+        },
+        {
+          "id": "u6",
+          "type": "node",
+          "parent": "1",
+          "label": "Источник данных: ввод пользователя\n(paymentId, файл документа, сумма,\nкод причины) — недоверенный,\nвалидируется в dApp и повторно в контракте",
+          "html": "Источник данных: ввод пользователя<br>(paymentId, файл документа, сумма,<br>код причины) — <b>недоверенный</b>,<br>валидируется в dApp и повторно в контракте"
+        },
+        {
+          "id": "d1",
+          "type": "node",
+          "parent": "1",
+          "label": "Сессия кошелька\nconnect / disconnect, адрес, chainId,\nguard сети (только 31337)",
+          "html": "<b>Сессия кошелька</b><br>connect / disconnect, адрес, chainId,<br>guard сети (только 31337)"
+        },
+        {
+          "id": "d2",
+          "type": "node",
+          "parent": "1",
+          "label": "Чтение (eth_call, без газа)\ngetPayment · verifyDocument · totalRegistered",
+          "html": "<b>Чтение (eth_call, без газа)</b><br>getPayment · verifyDocument · totalRegistered"
+        },
+        {
+          "id": "d3",
+          "type": "node",
+          "parent": "1",
+          "label": "Изменение состояния\nregisterPayment · markExecuted ·\nmarkRejected · cancelPayment\n(перед отправкой — simulateContract)",
+          "html": "<b>Изменение состояния</b><br>registerPayment · markExecuted ·<br>markRejected · cancelPayment<br>(перед отправкой — simulateContract)"
+        },
+        {
+          "id": "d4",
+          "type": "node",
+          "parent": "1",
+          "label": "Машина состояний транзакции\nожидание подписи → отправка → ожидание\nподтверждения → успех / ошибка\n(отказ в подписи 4001, неверная сеть, revert)",
+          "html": "<b>Машина состояний транзакции</b><br>ожидание подписи → отправка → ожидание<br>подтверждения → успех / ошибка<br>(отказ в подписи 4001, неверная сеть, revert)"
+        },
+        {
+          "id": "d5",
+          "type": "node",
+          "parent": "1",
+          "label": "Лента событий\nPaymentRegistered · PaymentStatusChanged\nдедупликация по txHash + logIndex",
+          "html": "<b>Лента событий</b><br>PaymentRegistered · PaymentStatusChanged<br>дедупликация по txHash + logIndex"
+        },
+        {
+          "id": "d6",
+          "type": "node",
+          "parent": "1",
+          "label": "Телеметрия приложения\nts (ISO-8601) + correlationId; без ключей и паролей",
+          "html": "<b>Телеметрия приложения</b><br>ts (ISO-8601) + correlationId; без ключей и паролей"
+        },
+        {
+          "id": "d7",
+          "type": "node",
+          "parent": "1",
+          "label": "AC-1. Проверка полномочий в UI — только UX\nскрытие кнопок не является защитой: код клиента\nподменяется, вызов можно отправить напрямую в RPC",
+          "html": "<b>AC-1. Проверка полномочий в UI — только UX</b><br>скрытие кнопок не является защитой: код клиента<br>подменяется, вызов можно отправить напрямую в RPC"
+        },
+        {
+          "id": "w1",
+          "type": "node",
+          "parent": "1",
+          "label": "EIP-1193 provider\neth_requestAccounts,\nchainChanged / accountsChanged",
+          "html": "<b>EIP-1193 provider</b><br>eth_requestAccounts,<br>chainChanged / accountsChanged"
+        },
+        {
+          "id": "w2",
+          "type": "node",
+          "parent": "1",
+          "label": "AC-2. Подтверждение пользователем\nподпись транзакции, выбор аккаунта и сети;\nпользователь может отклонить",
+          "html": "<b>AC-2. Подтверждение пользователем</b><br>подпись транзакции, выбор аккаунта и сети;<br>пользователь может отклонить"
+        },
+        {
+          "id": "w3",
+          "type": "node",
+          "parent": "1",
+          "label": "Приватные ключи\nникогда не покидают кошелёк,\ndApp их не видит и не хранит",
+          "html": "<b>Приватные ключи</b><br>никогда не покидают кошелёк,<br>dApp их не видит и не хранит"
+        },
+        {
+          "id": "w4",
+          "type": "node",
+          "parent": "1",
+          "label": "Только тестовые аккаунты\nлокальной сети Hardhat.\nПодпись ≠ авторизация:\nроль проверяет контракт",
+          "html": "Только тестовые аккаунты<br>локальной сети Hardhat.<br>Подпись ≠ авторизация:<br>роль проверяет контракт"
+        },
+        {
+          "id": "r1",
+          "type": "node",
+          "parent": "1",
+          "label": "JSON-RPC\neth_call · eth_estimateGas ·\neth_sendRawTransaction",
+          "html": "<b>JSON-RPC</b><br>eth_call · eth_estimateGas ·<br>eth_sendRawTransaction"
+        },
+        {
+          "id": "r2",
+          "type": "node",
+          "parent": "1",
+          "label": "Квитанции\neth_getTransactionReceipt:\nstatus = 1 (успех) / 0 (откат),\ngasUsed, blockNumber",
+          "html": "<b>Квитанции</b><br>eth_getTransactionReceipt:<br>status = 1 (успех) / 0 (откат),<br>gasUsed, blockNumber"
+        },
+        {
+          "id": "r3",
+          "type": "node",
+          "parent": "1",
+          "label": "Журнал событий\neth_getLogs / watchContractEvent",
+          "html": "<b>Журнал событий</b><br>eth_getLogs / watchContractEvent"
+        },
+        {
+          "id": "r4",
+          "type": "node",
+          "parent": "1",
+          "label": "Недоверенный источник данных\nRPC может вернуть устаревшее\nили ложное состояние.\ndApp сверяет chainId, адрес контракта\nи receipt.status; хеш tx успехом не является",
+          "html": "<b>Недоверенный источник данных</b><br>RPC может вернуть устаревшее<br>или ложное состояние.<br>dApp сверяет chainId, адрес контракта<br>и receipt.status; хеш tx успехом не является"
+        },
+        {
+          "id": "c1",
+          "type": "node",
+          "parent": "1",
+          "label": "PaymentOrderRegistry.sol (Solidity 0.8.28)\nOpenZeppelin AccessControl + Pausable",
+          "html": "<b>PaymentOrderRegistry.sol</b> (Solidity 0.8.28)<br>OpenZeppelin AccessControl + Pausable"
+        },
+        {
+          "id": "c2",
+          "type": "node",
+          "parent": "1",
+          "label": "★ AC-3. Авторитетная проверка полномочий\nonlyRole(OPERATOR_ROLE / SETTLEMENT_ROLE /\nDEFAULT_ADMIN_ROLE) по msg.sender + whenNotPaused\ntx.origin не используется (SC01, SWC-115)",
+          "html": "<b>★ AC-3. Авторитетная проверка полномочий</b><br>onlyRole(OPERATOR_ROLE / SETTLEMENT_ROLE /<br>DEFAULT_ADMIN_ROLE) по <b>msg.sender</b> + whenNotPaused<br>tx.origin не используется (SC01, SWC-115)"
+        },
+        {
+          "id": "c3",
+          "type": "node",
+          "parent": "1",
+          "label": "Проверки бизнес-логики\nавтомат статусов None → Registered → {Executed |\nRejected | Cancelled}; «4 глаза» settledBy ≠ registeredBy;\nуникальность paymentId; custom errors на нулевые значения",
+          "html": "<b>Проверки бизнес-логики</b><br>автомат статусов None → Registered → {Executed |<br>Rejected | Cancelled}; «4 глаза» settledBy ≠ registeredBy;<br>уникальность paymentId; custom errors на нулевые значения"
+        },
+        {
+          "id": "c4",
+          "type": "node",
+          "parent": "1",
+          "label": "Состояние (on-chain)\nmapping(bytes32 => PaymentOrder): docHash, amount,\nstatus, registeredBy, settledBy, время; totalRegistered.\nПерсональных данных нет — только хеши",
+          "html": "<b>Состояние (on-chain)</b><br>mapping(bytes32 =&gt; PaymentOrder): docHash, amount,<br>status, registeredBy, settledBy, время; totalRegistered.<br>Персональных данных нет — только хеши"
+        },
+        {
+          "id": "c5",
+          "type": "node",
+          "parent": "1",
+          "label": "События (источник истины для мониторинга)\nPaymentRegistered · PaymentStatusChanged ·\nRoleGranted / RoleRevoked · Paused / Unpaused\nсобытия откатившихся транзакций в журнал не попадают",
+          "html": "<b>События (источник истины для мониторинга)</b><br>PaymentRegistered · PaymentStatusChanged ·<br>RoleGranted / RoleRevoked · Paused / Unpaused<br><i>события откатившихся транзакций в журнал не попадают</i>"
+        },
+        {
+          "id": "c6",
+          "type": "node",
+          "parent": "1",
+          "label": "OWASP Smart Contract Top 10 (2025): SC01 — RBAC по msg.sender, admin без операционных ролей; SC03 — финальные статусы и «4 глаза»; SC04 — валидация входа custom errors; SC05/SC06 — внешних вызовов и переводов ETH нет (CEI); SC08 — checked arithmetic, SafeCast; SC10 — нет циклов, пауза только admin",
+          "html": "<b>OWASP Smart Contract Top 10 (2025):</b> SC01 — RBAC по msg.sender, admin без операционных ролей; SC03 — финальные статусы и «4 глаза»; SC04 — валидация входа custom errors; SC05/SC06 — внешних вызовов и переводов ETH нет (CEI); SC08 — checked arithmetic, SafeCast; SC10 — нет циклов, пауза только admin"
+        },
+        {
+          "id": "tb1",
+          "type": "edge",
+          "parent": "1",
+          "label": "Граница доверия 1\nпользователь ↔ приложение",
+          "html": "<b>Граница доверия 1</b><br>пользователь ↔ приложение"
+        },
+        {
+          "id": "tb2",
+          "type": "edge",
+          "parent": "1",
+          "label": "Граница доверия 2\ndApp ↔ кошелёк (ключи)",
+          "html": "<b>Граница доверия 2</b><br>dApp ↔ кошелёк (ключи)"
+        },
+        {
+          "id": "tb3",
+          "type": "edge",
+          "parent": "1",
+          "label": "Граница доверия 3\nклиент ↔ RPC-узел",
+          "html": "<b>Граница доверия 3</b><br>клиент ↔ RPC-узел"
+        },
+        {
+          "id": "tb4",
+          "type": "edge",
+          "parent": "1",
+          "label": "Граница доверия 4 (главная): off-chain ↔ on-chain\nвсё слева от линии подменяемо; решение принимает контракт",
+          "html": "<b>Граница доверия 4 (главная): off-chain ↔ on-chain</b><br>всё слева от линии подменяемо; решение принимает контракт"
+        },
+        {
+          "id": "e1",
+          "type": "edge",
+          "parent": "1",
+          "source": "u1",
+          "target": "d1"
+        },
+        {
+          "id": "e2",
+          "type": "edge",
+          "parent": "1",
+          "source": "u2",
+          "target": "d1"
+        },
+        {
+          "id": "e3",
+          "type": "edge",
+          "parent": "1",
+          "source": "u3",
+          "target": "d1"
+        },
+        {
+          "id": "e4",
+          "type": "edge",
+          "parent": "1",
+          "source": "u4",
+          "target": "d2",
+          "label": "только чтение"
+        },
+        {
+          "id": "e5",
+          "type": "edge",
+          "parent": "1",
+          "source": "u5",
+          "target": "d3",
+          "label": "негативный сценарий"
+        },
+        {
+          "id": "e6",
+          "type": "edge",
+          "parent": "1",
+          "source": "d3",
+          "target": "w2",
+          "label": "запрос подписи"
+        },
+        {
+          "id": "e7",
+          "type": "edge",
+          "parent": "1",
+          "source": "w2",
+          "target": "r1",
+          "label": "подписанная транзакция"
+        },
+        {
+          "id": "e8",
+          "type": "edge",
+          "parent": "1",
+          "source": "d2",
+          "target": "r1",
+          "label": "eth_call — без газа и подписи"
+        },
+        {
+          "id": "e9",
+          "type": "edge",
+          "parent": "1",
+          "source": "r1",
+          "target": "c1",
+          "label": "вызов функции,\nmsg.sender = адрес кошелька",
+          "html": "вызов функции,<br>msg.sender = адрес кошелька"
+        },
+        {
+          "id": "e10",
+          "type": "edge",
+          "parent": "1",
+          "source": "c2",
+          "target": "r2",
+          "label": "revert / custom error →\nreceipt.status = 0",
+          "html": "revert / custom error →<br>receipt.status = 0"
+        },
+        {
+          "id": "e11",
+          "type": "edge",
+          "parent": "1",
+          "source": "c5",
+          "target": "r3",
+          "label": "логи событий"
+        },
+        {
+          "id": "e12",
+          "type": "edge",
+          "parent": "1",
+          "source": "r3",
+          "target": "d5",
+          "label": "подписка / опрос"
+        },
+        {
+          "id": "e13",
+          "type": "edge",
+          "parent": "1",
+          "source": "r2",
+          "target": "d4",
+          "label": "квитанция: статус, gasUsed, блок"
+        },
+        {
+          "id": "z6",
+          "type": "node",
+          "parent": "1",
+          "label": "Зона 6. Off-chain: мониторинг безопасности, DevSecOps и измерения (Задание 3)",
+          "html": "<b>Зона 6. Off-chain: мониторинг безопасности, DevSecOps и измерения (Задание 3)</b>"
+        },
+        {
+          "id": "m1",
+          "type": "node",
+          "parent": "1",
+          "label": "Коллектор телеметрии (3 категории)\n1) события контракта (eth_getLogs)\n2) квитанции транзакций (status, gasUsed)\n3) ошибки RPC + журнал приложения\nts ISO-8601 + correlationId; паролей и ключей нет",
+          "html": "<b>Коллектор телеметрии (3 категории)</b><br>1) события контракта (eth_getLogs)<br>2) квитанции транзакций (status, gasUsed)<br>3) ошибки RPC + журнал приложения<br>ts ISO-8601 + correlationId; паролей и ключей нет"
+        },
+        {
+          "id": "m2",
+          "type": "node",
+          "parent": "1",
+          "label": "Правило R-1. Нарушение доступа (High)\nсигнал: revert AccessControlUnauthorizedAccount /\nNotPaymentInitiator / SelfSettlementForbidden\nпорог: ≥ 3 от одного адреса за 60 с\nреакция: алерт + запись инцидента",
+          "html": "<b>Правило R-1. Нарушение доступа (High)</b><br>сигнал: revert AccessControlUnauthorizedAccount /<br>NotPaymentInitiator / SelfSettlementForbidden<br>порог: ≥ 3 от одного адреса за 60 с<br>реакция: алерт + запись инцидента"
+        },
+        {
+          "id": "m3",
+          "type": "node",
+          "parent": "1",
+          "label": "Правило R-2. Эксплуатационный сбой (Medium)\nсигнал: receipt.status = 0, out of gas,\nошибки RPC / таймауты\nпорог: ≥ 2 за 120 с\nреакция: алерт деградации",
+          "html": "<b>Правило R-2. Эксплуатационный сбой (Medium)</b><br>сигнал: receipt.status = 0, out of gas,<br>ошибки RPC / таймауты<br>порог: ≥ 2 за 120 с<br>реакция: алерт деградации"
+        },
+        {
+          "id": "m4",
+          "type": "node",
+          "parent": "1",
+          "label": "Защита от повторных уведомлений\nключ дедупликации: правило + адрес;\ncooldown 5 мин; счётчик подавленных\nВывод: alerts.log + консоль монитора",
+          "html": "<b>Защита от повторных уведомлений</b><br>ключ дедупликации: правило + адрес;<br>cooldown 5 мин; счётчик подавленных<br>Вывод: alerts.log + консоль монитора"
+        },
+        {
+          "id": "m5",
+          "type": "node",
+          "parent": "1",
+          "label": "CI-конвейер (GitHub Actions + локальный прогон)\ninstall → compile/build → тесты (unit, fuzz, invariant, интеграционные) → Slither → аудит зависимостей (npm audit)",
+          "html": "<b>CI-конвейер (GitHub Actions + локальный прогон)</b><br>install → compile/build → тесты (unit, fuzz, invariant, интеграционные) → Slither → аудит зависимостей (npm audit)"
+        },
+        {
+          "id": "m6",
+          "type": "node",
+          "parent": "1",
+          "label": "Нагрузочный эксперимент (локальная сеть)\nпрофиль A: 30 последовательных транзакций; профиль B: 30 транзакций, 5 параллельных клиентов (свой аккаунт и nonce у каждого)\nметрики: p50, p95 (мс), пропускная способность (оп/с), доля неуспешных, gasUsed → CSV + графики",
+          "html": "<b>Нагрузочный эксперимент (локальная сеть)</b><br>профиль A: 30 последовательных транзакций; профиль B: 30 транзакций, 5 параллельных клиентов (свой аккаунт и nonce у каждого)<br>метрики: p50, p95 (мс), пропускная способность (оп/с), доля неуспешных, gasUsed → CSV + графики"
+        },
+        {
+          "id": "e14",
+          "type": "edge",
+          "parent": "1",
+          "source": "d6",
+          "target": "m1"
+        },
+        {
+          "id": "e15",
+          "type": "edge",
+          "parent": "1",
+          "source": "r4",
+          "target": "m1",
+          "label": "квитанции и ошибки RPC"
+        },
+        {
+          "id": "e16",
+          "type": "edge",
+          "parent": "1",
+          "source": "c6",
+          "target": "m4",
+          "label": "события контракта"
+        },
+        {
+          "id": "legend",
+          "type": "node",
+          "parent": "1",
+          "label": "Условные обозначения:  — — — красная пунктирная линия — граница доверия;  ★ AC-3 — единственная авторитетная точка проверки полномочий (смарт-контракт, msg.sender);  AC-1 (UI) и AC-2 (кошелёк) — вспомогательные проверки, защитой не являются.\nИсточники данных: ввод пользователя и файл документа (недоверенные) → dApp; состояние и журнал событий — смарт-контракт через RPC (проверяется chainId, адрес контракта и receipt.status); квитанции и прикладные записи — единственный источник информации об откатившихся транзакциях, события которых в журнал EVM не попадают.",
+          "html": "<b>Условные обозначения:</b>&nbsp;&nbsp;— — — красная пунктирная линия — граница доверия;&nbsp;&nbsp;★ AC-3 — единственная авторитетная точка проверки полномочий (смарт-контракт, msg.sender);&nbsp;&nbsp;AC-1 (UI) и AC-2 (кошелёк) — вспомогательные проверки, защитой не являются.<br><b>Источники данных:</b> ввод пользователя и файл документа (недоверенные) → dApp; состояние и журнал событий — смарт-контракт через RPC (проверяется chainId, адрес контракта и receipt.status); квитанции и прикладные записи — единственный источник информации об откатившихся транзакциях, события которых в журнал EVM не попадают."
+        }
+      ]
+    }
+  ]
+}

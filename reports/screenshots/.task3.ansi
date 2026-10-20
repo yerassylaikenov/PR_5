@@ -1,0 +1,40 @@
+
+[1m[36mTASK 3 - Monitoring, DevSecOps and performance[0m
+
+[1m[36mRule R-1 demo (access-control violation attempts)[0m
+[1m[36m=== demo:alert - R-1 access-control violation attempts ===[0m[0m
+contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
+attacker (no role)=0x90F79bf6EB2c4f870365E785982E1f101E93b906
+rule R-1: >=3 access-denied from one actor within 60s -> High (cooldown 5 min)
+
+[31m✘[0m attempt 1: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
+[31m✘[0m attempt 2: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
+[31m✘[0m attempt 3: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
+[41m[1m ALERT R-1 [HIGH] [0m [31mactor=0x90f79bf6eb2c4f870365e785982e1f101e93b906[0m count=3 in 60s lastError=AccessControlUnauthorizedAccount
+[31m✘[0m attempt 4: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
+[31m✘[0m attempt 5: [31mREVERTED[0m [31mAccessControlUnauthorizedAccount[0m  (simulateContract)
+
+[1mResult:[0m 1 alert emitted for R-1, remaining matches suppressed by cooldown.
+See reports/monitoring/alerts.log for the structured alert record.
+[32m✔[0m R-1 fired 1 time(s); last count=3, previously suppressed=0
+
+[1m[36mNormal scenario - no alerts expected[0m
+[1m[36m=== demo:normal — legitimate register -> markExecuted -> verifyDocument ===[0m[0m
+contract=0x5fbdb2315678afecb367f032d93f642f64180aa3
+
+[32m✔[0m [32mregisterPayment[0m tx=0xa1728a4339... block=94 gasUsed=101277
+[32m✔[0m [32mmarkExecuted[0m   tx=0x856c2043d4... block=95 gasUsed=61730
+[32m✔[0m [32mverifyDocument[0m -> true
+
+[1malerts: 0[0m  (expected 0 for the legitimate scenario)
+[32m✔[0m legitimate flow: alerts: 0
+
+[1m[36mLoad experiment (profiles A vs B)[0m
+[32m✔[0m A (sequential): p50=12.1ms p95=13.9ms TPS=79.3 fail=0%
+[32m✔[0m B (5x6 parallel): p50=30.5ms p95=46.2ms TPS=151.5 fail=0%
+  [33m-> limiting component: block production / nonce, not the contract (reports/load/SUMMARY.md)[0m
+
+[1m[36mTask 3 summary[0m
+[32m✔[0m Telemetry 3 categories (ISO time, correlationId, no secrets), rules R-1/R-2, cooldown 5 min
+[32m✔[0m CI: .github/workflows/ci.yml + npm run ci:local (reports/ci/ci-local.log)
+[32m✔[0m Charts: reports/load/chart-*.svg

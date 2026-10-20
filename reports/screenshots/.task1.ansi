@@ -1,0 +1,15 @@
+
+[1m[36mTASK 1 - Web3 client and secure integration[0m
+[32m✔[0m contract address has bytecode: 0x5fbdb2315678afecb367f032d93f642f64180aa3
+[32m✔[0m read totalRegistered = 82
+[32m✔[0m getPayment(order-001): status=Executed amount=150000000
+[32m✔[0m verifyDocument(order-001): hash matches (document not tampered)
+
+[1m[36mNegative scenario - privileged operation without permission[0m
+[41m[1m VULNERABILITY/ATTACK [0m [31mregisterPayment attempt without OPERATOR role -> revert AccessControlUnauthorizedAccount[0m
+  [33mactor:[0m 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266
+[32m✔[0m registry state unchanged (totalRegistered: 82 -> 82) - AC-3 defence worked
+
+[1m[36mTask 1 summary[0m
+[32m✔[0m wallet/network/roles, >=2 reads, >=4 writes, tx state machine, dedup event feed - implemented in dApp (web/)
+[32m[1mStart the UI: npm run web  ->  http://localhost:5173[0m
